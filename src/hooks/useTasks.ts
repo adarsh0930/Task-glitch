@@ -65,7 +65,7 @@ export function useTasks(): UseTasksState {
     let isMounted = true;
     async function load() {
       try {
-        const res = await fetch('/tasks.json');
+        const res = await fetch(import.meta.env.BASE_URL + 'tasks.json');
         if (!res.ok) throw new Error(`Failed to load tasks.json (${res.status})`);
         const data = (await res.json()) as any[];
         const normalized: Task[] = normalizeTasks(data);
